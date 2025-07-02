@@ -16,9 +16,6 @@ public:
 
 	GuessResult guess(const string& guessNumber) {
 		asserttIllegalArgument(guessNumber);
-		if (guessNumber == question) {
-			return { true, 3, 0 };
-		}
 
 		GuessResult result{ false, 0, 0 };
 		for (int pos = 0; pos < 3; pos++)
