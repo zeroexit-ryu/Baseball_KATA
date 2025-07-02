@@ -16,6 +16,10 @@ public:
 
 	GuessResult guess(const string& guessNumber) {
 		asserttIllegalArgument(guessNumber);
+		if (guessNumber == question) {
+			return { true, 3, 0 };
+		}
+
 		return { true, 3, 0 };
 	}
 
