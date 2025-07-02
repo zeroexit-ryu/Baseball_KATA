@@ -26,6 +26,11 @@ public:
 			if (guessNumber[pos] == question[pos]) {
 				result.strikes++;
 			}
+			else {
+				for (int ball_check_pos = 0; ball_check_pos < 3; ball_check_pos++) {
+					if (guessNumber[pos] == question[ball_check_pos]) result.balls++;
+				}
+			}
 		}
 
 		if (result.strikes == 3) result.solved = true;
