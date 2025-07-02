@@ -20,7 +20,17 @@ public:
 			return { true, 3, 0 };
 		}
 
-		return { true, 3, 0 };
+		GuessResult result{ false, 0, 0 };
+		for (int pos = 0; pos < 3; pos++)
+		{
+			if (guessNumber[pos] == question[pos]) {
+				result.strikes++;
+			}
+		}
+
+		if (result.strikes == 3) result.solved = true;
+
+		return result;
 	}
 
 	void asserttIllegalArgument(const std::string& guessNumber)
