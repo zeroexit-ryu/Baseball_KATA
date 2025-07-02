@@ -16,11 +16,23 @@ public:
 
 	GuessResult guess(const string& guessNumber) {
 		asserttIllegalArgument(guessNumber);
-		if (guessNumber == question) {
-			return { true, 3, 0 };
+
+		GuessResult result{ false, 0, 0 };
+		for (int pos = 0; pos < 3; pos++)
+		{
+			if (guessNumber[pos] == question[pos]) {
+				result.strikes++;
+			}
+			else {
+				for (int ball_check_pos = 0; ball_check_pos < 3; ball_check_pos++) {
+					if (guessNumber[pos] == question[ball_check_pos]) result.balls++;
+				}
+			}
 		}
 
-		return { true, 3, 0 };
+		if (result.strikes == 3) result.solved = true;
+
+		return result;
 	}
 
 	void asserttIllegalArgument(const std::string& guessNumber)
